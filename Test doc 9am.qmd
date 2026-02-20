@@ -8,13 +8,13 @@ editor: visual
 
 # Set up 
 ```{r}
-#| label: packages and data
+#| label: packages and data 
 #| message: false
 
-library(tidyverse)
-library(lterdatasampler)
-
-data(pie_crab)
+library(tidyverse) #general use package 
+library(lterdatasampler) #package of data sets 
+library(NatParksPalettes)
+data(pie_crab) #crab size data set 
 ```
 
 # Exploratory data visualization 
@@ -25,8 +25,14 @@ data(pie_crab)
 #base layer: ggplot
 ggplot(data = pie_crab, #dataset
        aes(x = latitude, # x-axis should be latitude, y-axis is crab size
-           y = size)) + 
+           y = size, 
+           color = site)) + 
   #first layer: point to represent individual crabs 
-  geom_point()
+  geom_point() + 
+  #changing colors to be different from default 
+  scale_color_manual( 
+    values = natparks.pals("Arches", n = 13, type = "continuous")) + 
+  #adding theme 
+  theme_minimal()
 ```
-
+#
