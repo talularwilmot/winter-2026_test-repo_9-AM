@@ -6,3 +6,27 @@ format: html
 editor: visual
 ---
 
+# Set up 
+```{r}
+#| label: packages and data
+#| message: false
+
+library(tidyverse)
+library(lterdatasampler)
+
+data(pie_crab)
+```
+
+# Exploratory data visualization 
+
+```{r}
+#| label: latitiude and size plot
+
+#base layer: ggplot
+ggplot(data = pie_crab, #dataset
+       aes(x = latitude, # x-axis should be latitude, y-axis is crab size
+           y = size)) + 
+  #first layer: point to represent individual crabs 
+  geom_point()
+```
+
